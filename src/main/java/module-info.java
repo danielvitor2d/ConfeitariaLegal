@@ -8,9 +8,12 @@ module com.br.confeitarialegal {
   requires static lombok;
   requires javax.json;
   requires java.sql;
+  requires java.base;
 
   opens com.br.confeitarialegal to javafx.fxml;
-  opens com.br.confeitarialegal.bean;
+  opens com.br.confeitarialegal.view to javafx.fxml;
+  opens com.br.confeitarialegal.model.entity;
   
   exports com.br.confeitarialegal;
+  exports com.br.confeitarialegal.view;
 }

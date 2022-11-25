@@ -1,4 +1,4 @@
-package com.br.confeitarialegal.bean;
+package com.br.confeitarialegal.model.entity;
 
 import java.util.UUID;
 import javax.persistence.Column;

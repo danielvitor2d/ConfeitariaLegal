@@ -1,5 +1,0 @@
-module-info.class
-com\br\confeitarialegal\App.class
-com\br\confeitarialegal\PrimaryController.class
-com\br\confeitarialegal\bean\Client.class
-com\br\confeitarialegal\SecondaryController.class
