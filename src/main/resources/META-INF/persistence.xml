@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <!-- unidade de persistencia -->
-    <persistence-unit name="persistencia_postgres_confeitaria_legal">
+    <persistence-unit name="persistencia_postgres_confeitaria_legal" transaction-type="RESOURCE_LOCAL">
         <!--Implementação do JPA, no nessa caso Hibernate--> 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!--Aqui são listadas todas as entidades--> 
@@ -10,13 +10,13 @@
         <properties>
             <!--Propriedades JDBC--> 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:49153/ConfeitariaLegal?currentSchema=v1"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:49153/confeitarialegal?currentSchema=v1"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="postgrespw"/>
             <!--Configurações específicas do Hibernate--> 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <!--DB Dialect--> 
-            <property name="hibernate.hbm2ddl.auto" value="create-only"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <!--DB Dialect-->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <!--create / create-drop / update--> 
             <property name="hibernate.show_sql" value="true"/>
             <!--Show SQL in console--> 
