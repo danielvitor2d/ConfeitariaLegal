@@ -1,11 +1,15 @@
 package com.br.confeitarialegal.view;
 
+import com.br.confeitarialegal.App;
 import com.br.confeitarialegal.entity.User;
 import com.br.confeitarialegal.controller.UserController;
 import com.br.confeitarialegal.repository.RepositoryMethod;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -137,8 +141,26 @@ public class RegistrationController {
 
       User user = userController.create(email, passwordText);
 
+      if (user == null) {
+        alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro!");
+        alert.setContentText("Erro!");
+        alert.show();
+        return;
+      }
+      
+      alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Registrado");
+      alert.setContentText("Registrado");
+      alert.show();
+      
       System.out.println(user);
 
+      try {
+        App.setRoot("view/login");
+      } catch (IOException ex) {
+        Logger.getLogger(RegistrationController.class.getName()).log(Level.SEVERE, null, ex);
+      }
     } else {
       alert = new Alert(AlertType.ERROR);
       alert.setTitle("Senhas diferentes");
