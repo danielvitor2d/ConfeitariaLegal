@@ -57,7 +57,7 @@
                         <FontAwesomeIconView fx:id="toggleConfirmPasswordVisible" glyphName="EYE_SLASH" layoutX="221.0" layoutY="21.857147216796875" onMouseClicked="#onMouseClickTogglePassword" styleClass="cursorHand" />
                      </children>
                   </Group>
-                  <Button graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#onMouseClickRegister" prefHeight="33.75" prefWidth="244.0" stylesheets="@../../../../styles/registration.css" text="Cadastrar" textFill="WHITE">
+                  <Button graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#onMouseClickRegister" prefHeight="33.75" prefWidth="244.0" stylesheets="@../../../../styles/registration.css" text="CADASTRAR" textFill="WHITE">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_RIGHT" />
                      </graphic>

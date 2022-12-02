@@ -2,6 +2,46 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
+.headerLogin {
+    -fx-background-color: #FFF;
+    -fx-background-radius: 20px;
 
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-border-color: #C4C4CC;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.textFieldEmail {
+    -fx-background-color: #FFF;
+    -fx-background-radius: 8px;
+    
+    -fx-border-radius: 8px; 
+    -fx-border-width: 1px;
+    -fx-border-color: #623329;
+}
+
+.loginButton {
+    -fx-background-color: #623329;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    
+    -fx-font-family: 'Fira Code';
+    -fx-font-style: normal;
+    -fx-font-weight: 500;
+    -fx-font-size: 14px;
+    -fx-line-height: 17px;
+    -fx-color: #FFFFFF;
+}
+
+.loginButton:hover {
+    -fx-background-color: #502A22
+}
+
+.loginButton:pressed {
+    -fx-background-color: #482017
+}
+
+.cursorHand {
+    -fx-cursor: hand;
 }
