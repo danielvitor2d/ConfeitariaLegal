@@ -8,4 +8,6 @@ import com.br.confeitarialegal.entity.User;
  */
 public interface IUserRepository {
   User create(String email, String password);
+  boolean login(String email, String password);
+  int getLength();
 }

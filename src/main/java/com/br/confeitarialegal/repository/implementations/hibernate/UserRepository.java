@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import com.br.confeitarialegal.entity.User;
 import com.br.confeitarialegal.hibernate.Connection;
 import com.br.confeitarialegal.repository.interfaces.IUserRepository;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,11 +29,36 @@ public class UserRepository implements IUserRepository {
 
   @Override
   public User create(String email, String password) {
-    User user = new User(email, password);
+    try {
+      User user = new User(email, password);
+      this.entityManager.getTransaction().begin();
+      this.entityManager.persist(user);
+      return user;
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+      this.entityManager.getTransaction().rollback();
+    } finally {
+      this.entityManager.getTransaction().commit();
+    }
+    return null;
+  }
+
+  @Override
+  public int getLength() {
     this.entityManager.getTransaction().begin();
-    this.entityManager.persist(user);
+    Long  length = (Long) this.entityManager.createQuery("SELECT COUNT(id) FROM library_users").getSingleResult();
     this.entityManager.getTransaction().commit();
-    return user;
+    return length.intValue();
+  }
+
+  @Override
+  public boolean login(String email, String password) {
+    this.entityManager.getTransaction().begin();
+    Query query = this.entityManager.createQuery("SELECT password FROM library_users WHERE email = :email");
+    query.setParameter("email", email);
+    String passwordDB = (String)query.getSingleResult();
+    this.entityManager.getTransaction().commit();
+    return (password.equals(passwordDB));
   }
   
 }
