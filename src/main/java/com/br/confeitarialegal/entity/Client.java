@@ -10,7 +10,7 @@ import javax.persistence.Id;
  *
  * @author Daniel Vitor
  */
-@Entity(name = "clients")
+@Entity(name = "library_clients")
 public class Client {
   
   @Id
