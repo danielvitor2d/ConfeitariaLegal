@@ -1,26 +1,116 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.br.confeitarialegal.view;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import com.br.confeitarialegal.controller.UserController;
+import com.br.confeitarialegal.repository.RepositoryMethod;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.fxml.FXML;
+
+import javafx.geometry.Point2D;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author ripse
+ * @author danielvitor
  */
-public class LoginController implements Initializable {
+public class LoginController {
 
-  /**
-   * Initializes the controller class.
-   */
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }  
+  @FXML
+  AnchorPane anchorPane;
+
+  @FXML
+  FontAwesomeIconView togglePasswordVisible;
+
+  @FXML
+  TextField textFieldEmail;
+
+  @FXML
+  PasswordField passwordField;
+
+  @FXML
+  Tooltip passwordTooltip;
+
+  private boolean showPassword;
+
+  Stage stage;
+
+  public LoginController() {
+    this.showPassword = false;
+  }
+
+  private void showPassword() {
+    if (this.stage == null) {
+      this.stage = (Stage) anchorPane.getScene().getWindow();
+    }
+
+    Point2D p = passwordField.localToScene(passwordField.getBoundsInLocal().getMaxX(), passwordField.getBoundsInLocal().getMinY());
+    passwordTooltip.setText(passwordField.getText());
+    passwordTooltip.show(passwordField,
+            p.getX() + stage.getScene().getX() + stage.getX(),
+            p.getY() + stage.getScene().getY() + stage.getY());
+  }
+
+  private void hidePassword() {
+    passwordTooltip.setText("");
+    passwordTooltip.hide();
+  }
+
+  public void onMouseClickTogglePassword() {
+    passwordTooltip.setText(passwordField.getText());
+    
+    if (showPassword == true) {
+      togglePasswordVisible.setIcon(FontAwesomeIcon.EYE_SLASH);
+      hidePassword();
+    } else {
+      togglePasswordVisible.setIcon(FontAwesomeIcon.EYE);
+      showPassword();
+    }
+
+    showPassword = !showPassword;
+  }
   
+  public void onMouseClickLogin() {
+    Alert alert;
+
+    String passwordText = passwordField.getText();
+    String email = textFieldEmail.getText();
+    
+    if (email.isEmpty()) {
+      alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("E-mail vazio");
+      alert.setContentText("Preencha o campo vazio");
+
+      alert.show();
+      return;
+    }
+    
+    if (!email.matches("[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+")) {
+      alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("E-mail inválido");
+      alert.setContentText("Digite um e-mail válido");
+
+      alert.show();
+      return;
+    }
+
+    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
+
+    if (userController.login(email, passwordText)) {
+      alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Logou");
+      alert.setContentText("Logou");
+      alert.show();
+    } else {
+      alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("Não logou");
+      alert.setContentText("Não logou");
+      alert.show();
+    }
+  }
 }

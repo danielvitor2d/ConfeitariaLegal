@@ -1,5 +1,7 @@
 package com.br.confeitarialegal;
 
+import com.br.confeitarialegal.controller.UserController;
+import com.br.confeitarialegal.repository.RepositoryMethod;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +20,16 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
-    scene = new Scene(loadFXML("view/primary"), 640, 480);
+    String page = "view/registration";
+    
+    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
+    int length = userController.getLength();
+   
+    if (length > 0) page = "view/login";
+    
+    scene = new Scene(loadFXML(page), 1366, 768);
     stage.setScene(scene);
+    stage.setResizable(false);
     stage.show();
   }
 

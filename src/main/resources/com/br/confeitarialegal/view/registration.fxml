@@ -15,26 +15,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../../styles/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.br.confeitarialegal.view.LoginController">
+<AnchorPane fx:id="anchorPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../../styles/registration.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.br.confeitarialegal.view.RegistrationController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1366.0" layoutX="27.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../../../assets/bg.png" />
          </image>
       </ImageView>
-      <Pane layoutX="481.0" layoutY="104.0" prefHeight="560.25" prefWidth="404.16" styleClass="headerLogin">
+      <Pane layoutX="481.0" layoutY="104.0" prefHeight="560.25" prefWidth="404.16" styleClass="headerRegistration" stylesheets="@../../../../styles/registration.css">
          <children>
-            <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="83.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" styleClass="headerLogin">
+            <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="83.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../assets/login_logo.png" />
                </image>
             </ImageView>
-            <Text fill="#323238" fontSmoothingType="LCD" layoutX="94.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Seja bem-vindo! Faça login para ter acesso ao sistema" textAlignment="CENTER" wrappingWidth="218.0">
+            <Text fill="#323238" fontSmoothingType="LCD" layoutX="94.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seja bem-vindo! Cadastre um e-mail e uma senha para o acesso ao sistema" textAlignment="CENTER" wrappingWidth="218.0">
                <font>
                   <Font name="Fira Code Regular" size="14.0" />
                </font>
             </Text>
-            <VBox layoutX="81.0" layoutY="357.0" spacing="10.0">
+            <VBox layoutX="81.0" layoutY="334.0" spacing="10.0">
                <children>
                   <TextField fx:id="textFieldEmail" prefHeight="35.0" prefWidth="244.0" promptText="E-mail" styleClass="textFieldEmail" />
                   <Group>
@@ -47,11 +47,21 @@
                         <FontAwesomeIconView fx:id="togglePasswordVisible" glyphName="EYE_SLASH" layoutX="221.0" layoutY="21.857147216796875" onMouseClicked="#onMouseClickTogglePassword" styleClass="cursorHand" />
                      </children>
                   </Group>
-                  <Button graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#onMouseClickLogin" prefHeight="33.75" prefWidth="244.0" text="ENTRAR" textFill="WHITE">
+                  <Group>
+                     <children>
+                        <PasswordField fx:id="confirmPasswordField" prefHeight="35.0" prefWidth="244.0" promptText="Confirmar senha" styleClass="textFieldEmail">
+                           <tooltip>
+                              <Tooltip fx:id="confirmPasswordTooltip" contentDisplay="RIGHT" text="Confirmar senha" />
+                           </tooltip>
+                        </PasswordField>
+                        <FontAwesomeIconView fx:id="toggleConfirmPasswordVisible" glyphName="EYE_SLASH" layoutX="221.0" layoutY="21.857147216796875" onMouseClicked="#onMouseClickTogglePassword" styleClass="cursorHand" />
+                     </children>
+                  </Group>
+                  <Button graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#onMouseClickRegister" prefHeight="33.75" prefWidth="244.0" stylesheets="@../../../../styles/registration.css" text="CADASTRAR" textFill="WHITE">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_RIGHT" />
                      </graphic>
-                     <font>
+                      <font>
                         <Font name="Fira Code Regular" size="14.0" />
                      </font>
                      <styleClass>
@@ -61,12 +71,6 @@
                   </Button>
                </children>
             </VBox>
-            <Text fill="#323238" fontSmoothingType="LCD" layoutX="94.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="218.0">
-               <font>
-                  <Font name="Fira Code Bold" size="32.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
+         </children></Pane>
    </children>
 </AnchorPane>
