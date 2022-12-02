@@ -39,7 +39,7 @@
                   <TextField fx:id="textFieldEmail" prefHeight="35.0" prefWidth="244.0" promptText="E-mail" styleClass="textFieldEmail" />
                   <Group>
                      <children>
-                        <PasswordField fx:id="passwordField" prefHeight="35.0" prefWidth="244.0" promptText="Senha" styleClass="textFieldEmail">
+                        <PasswordField fx:id="passwordField" onKeyPressed="#onPressEnter" prefHeight="35.0" prefWidth="244.0" promptText="Senha" styleClass="textFieldEmail">
                            <tooltip>
                               <Tooltip fx:id="passwordTooltip" contentDisplay="RIGHT" text="Senha" />
                            </tooltip>

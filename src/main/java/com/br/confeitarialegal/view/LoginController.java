@@ -11,6 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -61,35 +63,12 @@ public class LoginController {
     passwordTooltip.hide();
   }
 
-  public void onMouseClickTogglePassword() {
-    passwordTooltip.setText(passwordField.getText());
-    
-    if (showPassword == true) {
-      togglePasswordVisible.setIcon(FontAwesomeIcon.EYE_SLASH);
-      hidePassword();
-    } else {
-      togglePasswordVisible.setIcon(FontAwesomeIcon.EYE);
-      showPassword();
-    }
-
-    showPassword = !showPassword;
-  }
-  
-  public void onMouseClickLogin() {
+  private void handleLogin() {
     Alert alert;
 
     String passwordText = passwordField.getText();
     String email = textFieldEmail.getText();
-    
-    if (email.isEmpty()) {
-      alert = new Alert(Alert.AlertType.ERROR);
-      alert.setTitle("E-mail vazio");
-      alert.setContentText("Preencha o campo vazio");
 
-      alert.show();
-      return;
-    }
-    
     if (!email.matches("[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+")) {
       alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("E-mail inválido");
@@ -112,5 +91,29 @@ public class LoginController {
       alert.setContentText("Não logou");
       alert.show();
     }
+  }
+  
+  public void onMouseClickTogglePassword() {
+    passwordTooltip.setText(passwordField.getText());
+    
+    if (showPassword == true) {
+      togglePasswordVisible.setIcon(FontAwesomeIcon.EYE_SLASH);
+      hidePassword();
+    } else {
+      togglePasswordVisible.setIcon(FontAwesomeIcon.EYE);
+      showPassword();
+    }
+
+    showPassword = !showPassword;
+  }
+  
+  public void onPressEnter(KeyEvent event) {
+    if (event.getCode().equals(KeyCode.ENTER)) {
+      this.handleLogin(); 
+    }
+  }
+  
+  public void onMouseClickLogin() {
+    this.handleLogin();
   }
 }
