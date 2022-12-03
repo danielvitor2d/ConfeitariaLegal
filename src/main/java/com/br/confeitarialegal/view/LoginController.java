@@ -1,10 +1,17 @@
 package com.br.confeitarialegal.view;
 
+import com.br.confeitarialegal.App;
 import com.br.confeitarialegal.controller.UserController;
 import com.br.confeitarialegal.repository.RepositoryMethod;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
@@ -21,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author danielvitor
  */
-public class LoginController {
+public class LoginController implements Initializable {
 
   @FXML
   AnchorPane anchorPane;
@@ -42,7 +49,8 @@ public class LoginController {
 
   Stage stage;
 
-  public LoginController() {
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
     this.showPassword = false;
   }
 
@@ -85,6 +93,12 @@ public class LoginController {
       alert.setTitle("Logou");
       alert.setContentText("Logou");
       alert.show();
+      
+      try {
+        App.setRoot("view/dashboard");
+      } catch (IOException ex) {
+        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+      }
     } else {
       alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("Não logou");
