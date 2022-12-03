@@ -1,0 +1,72 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ConfeitariaLegal:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ConfeitariaLegal_jar</output-path>
+    <root id="archive" name="ConfeitariaLegal.jar">
+      <element id="module-output" name="ConfeitariaLegal" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/antlr/ST4/4.3/ST4-4.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.9.1/antlr4-runtime-4.9.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.1.1.Final/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jvnet/staxex/stax-ex/1.8/stax-ex-1.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jboss/jandex/2.2.3.Final/jandex-2.2.3.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/jaxb/jaxb-runtime/2.3.1/jaxb-runtime-2.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jboss/logging/jboss-logging/3.4.2.Final/jboss-logging-3.4.2.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/hibernate/orm/hibernate-core/6.0.0.Alpha9/hibernate-core-6.0.0.Alpha9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/ibm/icu/icu4j/61.1/icu4j-61.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/jensd/fontawesomefx-fontawesome/4.7.0-9.1.2/fontawesomefx-fontawesome-4.7.0-9.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/13/javafx-base-13-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/bytebuddy/byte-buddy/1.11.8/byte-buddy-1.11.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sun/istack/istack-commons-runtime/3.0.7/istack-commons-runtime-3.0.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.5.0/postgresql-42.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/jaxb/txw2/2.3.1/txw2-2.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sun/xml/fastinfoset/FastInfoset/1.2.15/FastInfoset-1.2.15.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/antlr/antlr4/4.9.1/antlr4-4.9.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/de/jensd/fontawesomefx-commons/9.1.2/fontawesomefx-commons-9.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/hibernate/common/hibernate-commons-annotations/5.1.2.Final/hibernate-commons-annotations-5.1.2.Final.jar" path-in-jar="/" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx-swt.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.base.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.controls.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.fxml.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.graphics.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.media.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.properties" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.swing.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/javafx.web.jar" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libavplugin-54.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libavplugin-56.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libavplugin-57.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libavplugin-ffmpeg-56.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libavplugin-ffmpeg-57.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libavplugin-ffmpeg-58.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libdecora_sse.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libfxplugins.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libglass.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libglassgtk2.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libglassgtk3.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libgstreamer-lite.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libjavafx_font.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libjavafx_font_freetype.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libjavafx_font_pango.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libjavafx_iio.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libjfxmedia.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libjfxwebkit.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libprism_common.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libprism_es2.so" />
+      <element id="file-copy" path="/usr/share/javafx-sdk-19/lib/libprism_sw.so" />
+    </root>
+  </artifact>
+</component>
