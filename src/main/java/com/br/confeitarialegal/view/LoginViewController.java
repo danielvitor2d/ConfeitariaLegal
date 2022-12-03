@@ -3,6 +3,7 @@ package com.br.confeitarialegal.view;
 import com.br.confeitarialegal.App;
 import com.br.confeitarialegal.controller.UserController;
 import com.br.confeitarialegal.repository.RepositoryMethod;
+import com.br.confeitarialegal.view.enums.Screens;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
@@ -28,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author danielvitor
  */
-public class LoginController implements Initializable {
+public class LoginViewController implements Initializable {
 
   @FXML
   AnchorPane anchorPane;
@@ -95,9 +96,9 @@ public class LoginController implements Initializable {
       alert.show();
       
       try {
-        App.setRoot("view/dashboard");
+        App.setRoot(Screens.CUSTOMERS.getRoute());
       } catch (IOException ex) {
-        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
       }
     } else {
       alert = new Alert(Alert.AlertType.ERROR);
@@ -110,7 +111,7 @@ public class LoginController implements Initializable {
   public void onMouseClickTogglePassword() {
     passwordTooltip.setText(passwordField.getText());
     
-    if (showPassword == true) {
+    if (showPassword) {
       togglePasswordVisible.setIcon(FontAwesomeIcon.EYE_SLASH);
       hidePassword();
     } else {

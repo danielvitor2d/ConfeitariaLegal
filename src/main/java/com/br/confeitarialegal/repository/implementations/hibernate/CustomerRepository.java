@@ -32,9 +32,9 @@ public class CustomerRepository implements ICustomerRepository {
   }
 
   @Override
-  public Customer create(String name, String document, String email, String phonenumber) {
+  public Customer create(String name, String document, String email, String phoneNumber) {
     try {
-      Customer customer = new Customer(name, document, email, phonenumber);
+      Customer customer = new Customer(name, document, email, phoneNumber);
       this.entityManager.getTransaction().begin();
       this.entityManager.persist(customer);
       return customer;

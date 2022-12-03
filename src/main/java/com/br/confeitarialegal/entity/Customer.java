@@ -27,31 +27,21 @@ public class Customer {
   @Column(name = "email")
   private String email;
   
-  @Column(name = "phonenumber")
-  private String phonenumber;
+  @Column(name = "phone_number")
+  private String phoneNumber;
 
-  public Customer() {
-    
-  }
+  public Customer() { }
 
   @Override
   public String toString() {
-    return "Customer{" + "id=" + id + ", name=" + name + ", document=" + document + ", email=" + email + ", phonenumber=" + phonenumber + '}';
+    return "Customer{" + "id=" + id + ", name=" + name + ", document=" + document + ", email=" + email + ", phone-number=" + phoneNumber + '}';
   }
   
-  public Customer(String name, String document, String email, String phonenumber) {
+  public Customer(String name, String document, String email, String phoneNumber) {
     this.name = name;
     this.document = document;
     this.email = email;
-    this.phonenumber = phonenumber;
-  }
-  
-  public Customer(int id, String name, String document, String email, String phonenumber) {
-    this.id = id;
-    this.name = name;
-    this.document = document;
-    this.email = email;
-    this.phonenumber = phonenumber;
+    this.phoneNumber = phoneNumber;
   }
   
   public Integer getId() {
@@ -86,11 +76,11 @@ public class Customer {
     this.email = email;
   }
   
-  public String getPhonenumber() {
-    return phonenumber;
+  public String getPhoneNumber() {
+    return phoneNumber;
   }
 
-  public void setPhonenumber(String phonenumber) {
-    this.phonenumber = phonenumber;
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 }
