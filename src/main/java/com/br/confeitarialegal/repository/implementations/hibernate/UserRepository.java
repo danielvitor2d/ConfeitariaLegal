@@ -53,12 +53,18 @@ public class UserRepository implements IUserRepository {
 
   @Override
   public boolean login(String email, String password) {
-    this.entityManager.getTransaction().begin();
-    Query query = this.entityManager.createQuery("SELECT password FROM library_users WHERE email = :email");
-    query.setParameter("email", email);
-    String passwordDB = (String)query.getSingleResult();
-    this.entityManager.getTransaction().commit();
-    return (password.equals(passwordDB));
+    try {
+      this.entityManager.getTransaction().begin();
+      Query query = this.entityManager.createQuery("SELECT password FROM library_users WHERE email = :email");
+      query.setParameter("email", email);
+      String passwordDB = (String)query.getSingleResult();
+      this.entityManager.getTransaction().commit();
+      return (password.equals(passwordDB));
+    } catch(Exception e) {
+      System.err.println(e.getMessage());
+      this.entityManager.getTransaction().commit();
+      return false;
+    }
   }
   
 }

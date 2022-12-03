@@ -5,6 +5,7 @@ import com.br.confeitarialegal.entity.User;
 import com.br.confeitarialegal.controller.UserController;
 import com.br.confeitarialegal.repository.RepositoryMethod;
 
+import com.br.confeitarialegal.view.enums.Screens;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author Daniel Vitor
  */
-public class RegistrationController {
+public class RegistrationViewController {
   
   @FXML
   AnchorPane anchorPane;
@@ -56,7 +57,7 @@ public class RegistrationController {
   
   Stage stage;
   
-  public RegistrationController () {
+  public RegistrationViewController() {
     this.showPassword = false;
   }
   
@@ -90,7 +91,7 @@ public class RegistrationController {
     passwordTooltip.setText(passwordField.getText());
     confirmPasswordTooltip.setText(confirmPasswordField.getText());
     
-    if (showPassword == true) {
+    if (showPassword) {
       togglePasswordVisible.setIcon(FontAwesomeIcon.EYE_SLASH);
       toggleConfirmPasswordVisible.setIcon(FontAwesomeIcon.EYE_SLASH);
       
@@ -157,9 +158,9 @@ public class RegistrationController {
       System.out.println(user);
 
       try {
-        App.setRoot("view/login");
+        App.setRoot(Screens.LOGIN.getRoute());
       } catch (IOException ex) {
-        Logger.getLogger(RegistrationController.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(RegistrationViewController.class.getName()).log(Level.SEVERE, null, ex);
       }
     } else {
       alert = new Alert(AlertType.ERROR);
