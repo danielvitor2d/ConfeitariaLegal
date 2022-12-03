@@ -40,16 +40,16 @@ public class App extends Application {
   }
   
   private String getInitialScreen() {
-    return "view/dashboard";
-//    
-//    String screen = "view/registration";
-//    
-//    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
-//    int length = userController.getLength();
-//   
-//    if (length > 0) 
-//      screen = "view/login";
-//    
-//    return screen;
+//    return "view/dashboard";
+    
+    String screen = "view/registration";
+    
+    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
+    int length = userController.getLength();
+   
+    if (length > 0) 
+      screen = "view/login";
+    
+    return screen;
   }
 }
