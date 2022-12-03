@@ -20,14 +20,7 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws IOException {
-    String page = "view/registration";
-    
-    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
-    int length = userController.getLength();
-   
-    if (length > 0) page = "view/login";
-    
-    scene = new Scene(loadFXML(page), 1366, 768);
+    scene = new Scene(loadFXML(this.getInitialScreen()), 1366, 768);
     stage.setScene(scene);
     stage.setResizable(false);
     stage.show();
@@ -44,5 +37,19 @@ public class App extends Application {
 
   public static void main(String[] args) {    
     launch();
+  }
+  
+  private String getInitialScreen() {
+//    return "view/dashboard";
+    
+    String screen = "view/registration";
+    
+    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
+    int length = userController.getLength();
+   
+    if (length > 0) 
+      screen = "view/login";
+    
+    return screen;
   }
 }

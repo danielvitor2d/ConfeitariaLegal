@@ -21,7 +21,7 @@
     -fx-border-color: #623329;
 }
 
-.loginButton {
+.registerButton {
     -fx-background-color: #623329;
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
@@ -34,11 +34,11 @@
     -fx-color: #FFFFFF;
 }
 
-.loginButton:hover {
+.registerButton:hover {
     -fx-background-color: #502A22
 }
 
-.loginButton:pressed {
+.registerButton:pressed {
     -fx-background-color: #482017
 }
 

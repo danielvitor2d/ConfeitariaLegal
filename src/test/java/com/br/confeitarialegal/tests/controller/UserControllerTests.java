@@ -1,6 +1,7 @@
 package com.br.confeitarialegal.tests.controller;
 
 import org.junit.Test;
+import org.junit.Assert;
 
 import com.br.confeitarialegal.entity.User;
 import com.br.confeitarialegal.controller.UserController;
@@ -18,6 +19,6 @@ public class UserControllerTests {
 
     User user = userController.create("admin@admin.com", "pass1234admin");
     
-    assert(user.getId() != null);
+    Assert.assertNotNull(user.getId());
   }
 }
