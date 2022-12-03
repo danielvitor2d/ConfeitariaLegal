@@ -39,7 +39,6 @@ public class UserRepository implements IUserRepository {
       this.entityManager.getTransaction().rollback();
     } finally {
       this.entityManager.getTransaction().commit();
-      this.entityManager.close();
     }
     return null;
   }
@@ -49,7 +48,6 @@ public class UserRepository implements IUserRepository {
     this.entityManager.getTransaction().begin();
     Long  length = (Long) this.entityManager.createQuery("SELECT COUNT(id) FROM library_users").getSingleResult();
     this.entityManager.getTransaction().commit();
-    this.entityManager.close();
     return length.intValue();
   }
 
@@ -60,7 +58,6 @@ public class UserRepository implements IUserRepository {
     query.setParameter("email", email);
     String passwordDB = (String)query.getSingleResult();
     this.entityManager.getTransaction().commit();
-    this.entityManager.close();
     return (password.equals(passwordDB));
   }
   

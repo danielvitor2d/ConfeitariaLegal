@@ -43,7 +43,6 @@ public class CustomerRepository implements ICustomerRepository {
       this.entityManager.getTransaction().rollback();
     } finally {
       this.entityManager.getTransaction().commit();
-      this.entityManager.close();
     }
     return null;
   }
@@ -61,7 +60,6 @@ public class CustomerRepository implements ICustomerRepository {
     List<Customer> customers = typedQuery.getResultList();
     
     this.entityManager.getTransaction().commit();
-    this.entityManager.close();
     
     return customers;
   }
