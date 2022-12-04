@@ -5,8 +5,8 @@
     <!--Implementação do JPA, no nessa caso Hibernate-->
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!--Aqui são listadas todas as entidades-->
-    <class>com.br.confeitarialegal.entity.User</class>
-    <class>com.br.confeitarialegal.entity.Customer</class>
+    <class>com.br.confeitarialegal.entities.User</class>
+    <class>com.br.confeitarialegal.entities.Customer</class>
     <properties>
       <!--Propriedades JDBC-->
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -14,7 +14,7 @@
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.password" value="postgrespw"/>
       <!--Configurações específicas do Hibernate-->
-      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
       <!--DB Dialect-->
       <property name="hibernate.hbm2ddl.auto" value="update"/>
       <!--create / create-drop / update-->

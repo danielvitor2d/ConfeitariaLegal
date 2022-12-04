@@ -11,9 +11,9 @@ module com.br.confeitarialegal {
   requires de.jensd.fx.glyphs.fontawesome;
 
   opens com.br.confeitarialegal to javafx.fxml;
-  opens com.br.confeitarialegal.view to javafx.fxml;
-  opens com.br.confeitarialegal.entity;
+  opens com.br.confeitarialegal.views to javafx.fxml;
+  opens com.br.confeitarialegal.entities;
 
   exports com.br.confeitarialegal;
-  exports com.br.confeitarialegal.view;
+  exports com.br.confeitarialegal.views;
 }
