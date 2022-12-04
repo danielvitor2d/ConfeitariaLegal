@@ -5,8 +5,8 @@
     <!--Implementação do JPA, no nessa caso Hibernate-->
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!--Aqui são listadas todas as entidades-->
-    <class>com.br.confeitarialegal.entity.User</class>
-    <class>com.br.confeitarialegal.entity.Customer</class>
+    <class>com.br.confeitarialegal.entities.User</class>
+    <class>com.br.confeitarialegal.entities.Customer</class>
     <properties>
       <!--Propriedades JDBC-->
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

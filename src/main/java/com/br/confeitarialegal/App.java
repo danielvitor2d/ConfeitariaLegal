@@ -1,8 +1,6 @@
 package com.br.confeitarialegal;
 
-import com.br.confeitarialegal.controller.UserController;
-import com.br.confeitarialegal.repository.RepositoryMethod;
-import com.br.confeitarialegal.view.enums.Screens;
+import com.br.confeitarialegal.views.enums.Screens;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

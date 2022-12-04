@@ -3,9 +3,9 @@ package com.br.confeitarialegal.tests.controller;
 import org.junit.Test;
 import org.junit.Assert;
 
-import com.br.confeitarialegal.entity.User;
-import com.br.confeitarialegal.controller.UserController;
-import com.br.confeitarialegal.repository.RepositoryMethod;
+import com.br.confeitarialegal.entities.User;
+import com.br.confeitarialegal.controllers.UserController;
+import com.br.confeitarialegal.repositories.RepositoryMethod;
 
 /**
  *
