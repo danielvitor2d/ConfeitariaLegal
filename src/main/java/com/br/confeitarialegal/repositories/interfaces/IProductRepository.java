@@ -6,6 +6,7 @@ import com.br.confeitarialegal.entities.enums.UnitaryTypes;
 import java.util.List;
 
 public interface IProductRepository {
-    Product create(String name, float unitaryValue, UnitaryTypes unitaryType);
+    Product create(String name, double unitaryValue, UnitaryTypes unitaryType);
+    Product get(int id);
     List<Product> list();
 }

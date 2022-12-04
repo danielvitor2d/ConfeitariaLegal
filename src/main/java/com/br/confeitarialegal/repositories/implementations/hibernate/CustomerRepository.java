@@ -37,14 +37,26 @@ public class CustomerRepository implements ICustomerRepository {
       Customer customer = new Customer(name, document, email, phoneNumber);
       this.entityManager.getTransaction().begin();
       this.entityManager.persist(customer);
+      this.entityManager.getTransaction().commit();
       return customer;
     } catch (Exception e) {
       System.err.println(e.getMessage());
       this.entityManager.getTransaction().rollback();
-    } finally {
-      this.entityManager.getTransaction().commit();
     }
     return null;
+  }
+
+  @Override
+  public Customer get(int id) {
+    Customer customer = null;
+    try {
+      this.entityManager.getTransaction().begin();
+      customer = this.entityManager.find(Customer.class, id);
+      this.entityManager.getTransaction().commit();
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+    }
+    return customer;
   }
 
   @Override

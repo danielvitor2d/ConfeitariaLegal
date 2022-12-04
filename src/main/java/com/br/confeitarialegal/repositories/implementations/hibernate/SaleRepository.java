@@ -2,7 +2,9 @@ package com.br.confeitarialegal.repositories.implementations.hibernate;
 
 import com.br.confeitarialegal.entities.Customer;
 import com.br.confeitarialegal.entities.Product;
+import com.br.confeitarialegal.entities.ProductsSales;
 import com.br.confeitarialegal.entities.Sale;
+import com.br.confeitarialegal.entities.enums.PaymentTypes;
 import com.br.confeitarialegal.entities.enums.StatusType;
 import com.br.confeitarialegal.hibernate.Connection;
 import com.br.confeitarialegal.repositories.interfaces.ISaleRepository;
@@ -13,7 +15,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SaleRepository implements ISaleRepository {
     private static SaleRepository instance;
@@ -32,17 +36,32 @@ public class SaleRepository implements ISaleRepository {
     }
 
     @Override
-    public Sale create(Customer customer, List<Product> products, StatusType status, Float totalValue, Date paymentDate, Date createdAt) {
+    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
         try {
-            Sale sale = new Sale(customer, products, status, totalValue, paymentDate, createdAt);
+            Set<ProductsSales> productsSales = new HashSet<>();
+
+            double totalValue = 0.0;
+
+            for (int idx = 0; idx < products.size(); idx++) {
+                Product productToSave = products.get(idx);
+                Double quantityToSave = quantity.get(idx);
+                Double totalValueToSave = quantityToSave * productToSave.getUnitaryValue();
+                totalValue += totalValueToSave;
+                productsSales.add(new ProductsSales(productToSave, quantityToSave, totalValueToSave));
+            }
+
+            Sale sale = new Sale(customer, productsSales, status, paymentType, totalValue, paymentDate, createdAt);
+
             this.entityManager.getTransaction().begin();
-            this.entityManager.persist(sale);
+
+            this.entityManager.merge(sale);
+
+            this.entityManager.getTransaction().commit();
+
             return sale;
         } catch (Exception e) {
             System.err.println(e.getMessage());
             this.entityManager.getTransaction().rollback();
-        } finally {
-            this.entityManager.getTransaction().commit();
         }
         return null;
     }

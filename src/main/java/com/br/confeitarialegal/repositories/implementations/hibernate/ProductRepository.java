@@ -30,19 +30,31 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public Product create(String name, float unitaryValue, UnitaryTypes unitaryType) {
+    public Product create(String name, double unitaryValue, UnitaryTypes unitaryType) {
         try {
             Product product = new Product(name, unitaryValue, unitaryType);
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(product);
+            this.entityManager.getTransaction().commit();
             return product;
         } catch (Exception e) {
             System.err.println(e.getMessage());
             this.entityManager.getTransaction().rollback();
-        } finally {
-            this.entityManager.getTransaction().commit();
         }
         return null;
+    }
+
+    @Override
+    public Product get(int id) {
+        Product product = null;
+        try {
+            this.entityManager.getTransaction().begin();
+            product = this.entityManager.find(Product.class, id);
+            this.entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return product;
     }
 
     @Override

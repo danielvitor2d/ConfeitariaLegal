@@ -3,6 +3,7 @@ package com.br.confeitarialegal.controllers;
 import com.br.confeitarialegal.entities.Customer;
 import com.br.confeitarialegal.entities.Product;
 import com.br.confeitarialegal.entities.Sale;
+import com.br.confeitarialegal.entities.enums.PaymentTypes;
 import com.br.confeitarialegal.entities.enums.StatusType;
 import com.br.confeitarialegal.repositories.RepositoryMethod;
 import com.br.confeitarialegal.repositories.implementations.hibernate.SaleRepository;
@@ -24,9 +25,8 @@ public class SaleController {
         }
     }
 
-    public Sale create(Customer customer, List<Product> products, StatusType status, Float totalValue, Date paymentDate, Date createdAt) {
-        Sale Sale = this.repository.create(customer, products, status, totalValue, paymentDate, createdAt);
-        return Sale;
+    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
+        return this.repository.create(customer, products, quantity, status, paymentType, paymentDate, createdAt);
     }
 
     public List<Sale> list() {

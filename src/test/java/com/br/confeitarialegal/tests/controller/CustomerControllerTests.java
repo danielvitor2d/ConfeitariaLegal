@@ -17,7 +17,7 @@ import com.br.confeitarialegal.repositories.RepositoryMethod;
 public class CustomerControllerTests {
   
   @Test
-  public void shoud_be_able_to_create_a_customer() {
+  public void should_be_able_to_create_a_customer() {
     CustomerController customerController = new CustomerController(RepositoryMethod.IN_MEMORY);
 
     Customer customer = customerController.create("Daniel", "048.809.450-05", "daniel@gmail.com", "88996134386");

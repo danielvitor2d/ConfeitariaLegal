@@ -23,8 +23,11 @@ public class CustomerController {
   }
   
   public Customer create(String name, String document, String email, String phonenumber) {
-    Customer customer = this.repository.create(name, document, email, phonenumber);
-    return customer;
+    return this.repository.create(name, document, email, phonenumber);
+  }
+
+  public Customer get(int id) {
+    return this.repository.get(id);
   }
 
   public List<Customer> list() {

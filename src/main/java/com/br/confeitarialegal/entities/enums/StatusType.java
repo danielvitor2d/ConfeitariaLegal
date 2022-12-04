@@ -1,11 +1,11 @@
 package com.br.confeitarialegal.entities.enums;
 
 public enum StatusType {
-    DONE("finalizada"),
-    DRAFT("rascunho"),
-    AWAITING_PAYMENT("aguardando"),
-    CANCELED("cancelada"),
-    REPAID("reembolsada");
+    DONE("Finalizada"),
+    DRAFT("Rascunho"),
+    AWAITING_PAYMENT("Aguardando"),
+    CANCELED("Cancelada"),
+    REPAID("Reembolsada");
 
     private String type;
 

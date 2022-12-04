@@ -21,9 +21,12 @@ public class ProductController {
         }
     }
 
-    public Product create(String name, float unitaryValue, UnitaryTypes unitaryType) {
-        Product product = this.repository.create(name, unitaryValue, unitaryType);
-        return product;
+    public Product create(String name, double unitaryValue, UnitaryTypes unitaryType) {
+        return this.repository.create(name, unitaryValue, unitaryType);
+    }
+
+    public Product get(int id) {
+        return this.repository.get(id);
     }
 
     public List<Product> list() {

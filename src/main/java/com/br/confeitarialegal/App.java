@@ -1,5 +1,7 @@
 package com.br.confeitarialegal;
 
+import com.br.confeitarialegal.controllers.UserController;
+import com.br.confeitarialegal.repositories.RepositoryMethod;
 import com.br.confeitarialegal.views.enums.Screens;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -39,16 +41,16 @@ public class App extends Application {
   }
   
   private String getInitialScreen() {
-    return Screens.CUSTOMERS.getRoute();
+//    return Screens.CUSTOMERS.getRoute();
     
-//    String screen = Screens.REGISTRATION.getRoute();;
-//
-//    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
-//    int length = userController.getLength();
-//
-//    if (length > 0)
-//      screen = Screens.LOGIN.getRoute();;
-//
-//    return screen;
+    String screen = Screens.REGISTRATION.getRoute();;
+
+    UserController userController = new UserController(RepositoryMethod.HIBERNATE);
+    int length = userController.getLength();
+
+    if (length > 0)
+      screen = Screens.LOGIN.getRoute();;
+
+    return screen;
   }
 }

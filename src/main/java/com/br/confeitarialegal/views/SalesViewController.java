@@ -1,11 +1,12 @@
 package com.br.confeitarialegal.views;
 
-import com.br.confeitarialegal.App;
-import com.br.confeitarialegal.controllers.CustomerController;
-import com.br.confeitarialegal.entities.Customer;
+import com.br.confeitarialegal.controllers.SaleController;
+import com.br.confeitarialegal.entities.Sale;
 import com.br.confeitarialegal.repositories.RepositoryMethod;
-import com.br.confeitarialegal.views.enums.Screens;
+import com.br.confeitarialegal.utils.FormatData;
 import com.br.confeitarialegal.views.utils.ManageScreens;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -13,11 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -27,84 +26,63 @@ import java.util.logging.Logger;
 public class SalesViewController implements Initializable {
 
   @FXML
-  TableView<Customer> tableViewCustomers;
-  
-  @FXML
-  TableColumn<Customer, Integer> tableColumnId;
-  
-  @FXML
-  TableColumn<Customer, String> tableColumnCustomer;
-  
-  @FXML
-  TableColumn<Customer, String> tableColumnDocument;
-  
-  @FXML
-  TableColumn<Customer, String> tableColumnEmail;
-  
-  @FXML
   AnchorPane anchorPaneSales;
-  
   @FXML
   HBox saleButton;
-  
   @FXML
   HBox customerButton;
-  
   @FXML
   HBox productButton;
-  
   @FXML
   HBox logoutButton;
-  
-  AnchorPane currentAnchorPane;
-  
-  CustomerController customerController;
-  
-//  @FXML
-//  public void refresh() {
-//    Task<List<Customer>> task = new Task<List<Customer>>() {
-//      @Override
-//      protected List<Customer> call() throws Exception {
-//        List<Customer> customers = new ArrayList<>();
-//        customers.add(new Customer(1, "Daniel", "123.123.123-32", "daniel@gmail.com", "88996134386"));
-//        customers.add(new Customer(2, "Gustavo", "364.634.234-63", "rafael@gmail.com", "88997451355"));
-//        return customers;
-//      }
-//
-//      @Override
-//      protected void succeeded() {
-//        tableViewCustomers.getItems().clear();
-//        tableViewCustomers.getItems().addAll(getValue());
-//      }
-//    };
-//
-//    new Thread(task).start();
-//  }
+  SaleController saleController;
+  @FXML
+  private TableColumn<Sale, String> tableColumnId;
+  @FXML
+  private TableColumn<Sale, String> tableColumnCustomer;
+  @FXML
+  private TableColumn<Sale, String> tableColumnDate;
+  @FXML
+  private TableColumn<Sale, String> tableColumnPaymentDate;
+  @FXML
+  private TableColumn<Sale, String> tableColumnPaymentType;
+  @FXML
+  private TableColumn<Sale, String> tableColumnStatus;
+  @FXML
+  private TableColumn<Sale, String> tableColumnTotal;
+  @FXML
+  private TableView<Sale> tableViewSale;
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    this.customerController = new CustomerController(RepositoryMethod.HIBERNATE);
+    this.saleController = new SaleController(RepositoryMethod.HIBERNATE);
 
-//    this.tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-//    this.tableColumnCustomer.setCellValueFactory(new PropertyValueFactory<>("name"));
-//    this.tableColumnDocument.setCellValueFactory(new PropertyValueFactory<>("document"));
-//    this.tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-//
-//    Task<List<Customer>> task = new Task<>() {
-//      @Override
-//      protected List<Customer> call() {
-//        List<Customer> customers = customerController.list();
-//        return customers;
-//      }
-//
-//      @Override
-//      protected void succeeded() {
-//        tableViewCustomers.getItems().clear();
-//        tableViewCustomers.getItems().addAll(this.getValue());
-//      }
-//    };
+    initializeTableView();
+  }
 
-//    new Thread(task).start();
+  private void initializeTableView() {
+    this.tableColumnId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+    this.tableColumnCustomer.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName()));
+    this.tableColumnDate.setCellValueFactory(cellData -> new SimpleStringProperty(FormatData.toLocaleDate(cellData.getValue().getCreatedAt())));
+    this.tableColumnPaymentDate.setCellValueFactory(cellData -> new SimpleStringProperty(FormatData.maskNull(FormatData.toLocaleDate(cellData.getValue().getPaymentDate()), "Não pago")));
+    this.tableColumnPaymentType.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaymentType().getPaymentType()));
+    this.tableColumnStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus().getStatus()));
+    this.tableColumnTotal.setCellValueFactory(cellData -> new SimpleStringProperty(FormatData.toCurrencyBRL(cellData.getValue().getTotalValue())));
+
+    Task<List<Sale>> task = new Task<>() {
+      @Override
+      protected List<Sale> call() {
+        return saleController.list();
+      }
+
+      @Override
+      protected void succeeded() {
+        tableViewSale.getItems().clear();
+        tableViewSale.getItems().addAll(this.getValue());
+      }
+    };
+
+    new Thread(task).start();
   }
 
   public void switchToSales() {
@@ -118,11 +96,8 @@ public class SalesViewController implements Initializable {
   public void switchToProducts() {
     ManageScreens.switchToProducts();
   }
+
   public void logout() {
-    try {
-      App.setRoot(Screens.LOGIN.getRoute());
-    } catch (IOException ex) {
-      Logger.getLogger(SalesViewController.class.getName()).log(Level.SEVERE, null, ex);
-    }
+    ManageScreens.switchToLogin();
   }
 }

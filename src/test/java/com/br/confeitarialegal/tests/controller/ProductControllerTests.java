@@ -13,10 +13,10 @@ import java.util.List;
 public class ProductControllerTests {
 
     @Test
-    public void shoud_be_able_to_create_a_product() {
+    public void should_be_able_to_create_a_product() {
         ProductController productController = new ProductController(RepositoryMethod.IN_MEMORY);
 
-        Product product = productController.create("Coxinha", 5.0f, UnitaryTypes.UNIT);
+        Product product = productController.create("Coxinha", 5.0, UnitaryTypes.UNIT);
 
         Assert.assertNotNull(product.getId());
     }
@@ -25,8 +25,8 @@ public class ProductControllerTests {
     public void should_be_able_to_list_products() {
         ProductController productController = new ProductController(RepositoryMethod.IN_MEMORY);
 
-        Product product1 = productController.create("Coxinha", 5.0f, UnitaryTypes.UNIT);
-        Product product2 = productController.create("Bolo confeitado", 25.99f, UnitaryTypes.KILOGRAM);
+        Product product1 = productController.create("Coxinha", 5.0, UnitaryTypes.UNIT);
+        Product product2 = productController.create("Bolo confeitado", 25.99, UnitaryTypes.KILOGRAM);
 
         List<Product> list = new ArrayList<>();
         list.add(product1);

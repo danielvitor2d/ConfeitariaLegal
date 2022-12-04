@@ -2,13 +2,13 @@ package com.br.confeitarialegal.repositories.implementations.in_memory;
 
 import com.br.confeitarialegal.entities.Customer;
 import com.br.confeitarialegal.entities.Product;
+import com.br.confeitarialegal.entities.ProductsSales;
 import com.br.confeitarialegal.entities.Sale;
+import com.br.confeitarialegal.entities.enums.PaymentTypes;
 import com.br.confeitarialegal.entities.enums.StatusType;
 import com.br.confeitarialegal.repositories.interfaces.ISaleRepository;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class SaleRepositoryInMemory implements ISaleRepository {
     List<Sale> sales;
@@ -17,9 +17,22 @@ public class SaleRepositoryInMemory implements ISaleRepository {
         this.sales = new ArrayList<>();
     }
 
-    public Sale create(Customer customer, List<Product> products, StatusType status, Float totalValue, Date paymentDate, Date createdAt) {
-        Sale sale = new Sale(123, customer, products, status, totalValue, paymentDate, createdAt);
+    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
+        Set<ProductsSales> productsSales = new HashSet<>();
+
+        double totalValue = 0.0;
+
+        for (int idx = 0; idx < products.size(); idx++) {
+            Product productToSave = products.get(idx);
+            Double quantityToSave = quantity.get(idx);
+            Double totalValueToSave = quantityToSave * productToSave.getUnitaryValue();
+            totalValue += totalValueToSave;
+            productsSales.add(new ProductsSales(productToSave, quantityToSave, totalValueToSave));
+        }
+
+        Sale sale = new Sale(123, customer, productsSales, status, paymentType, totalValue, paymentDate, createdAt);
         this.sales.add(sale);
+
         return sale;
     }
 

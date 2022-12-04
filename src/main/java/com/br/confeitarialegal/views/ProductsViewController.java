@@ -30,7 +30,7 @@ public class ProductsViewController implements Initializable {
   TableView<Product> tableViewProducts;
   
   @FXML
-  TableColumn<Product, Integer> tableColumnId;
+  TableColumn<Product, String> tableColumnId;
   
   @FXML
   TableColumn<Product, String> tableColumnProduct;
@@ -66,7 +66,7 @@ public class ProductsViewController implements Initializable {
   }
 
   private void initializeTableView() {
-    this.tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+    this.tableColumnId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
     this.tableColumnProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
     this.tableColumnUnitaryValue.setCellValueFactory(cellData -> new SimpleStringProperty(FormatData.toCurrencyBRL(cellData.getValue().getUnitaryValue())));
     this.tableColumnUnitaryType.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUnitaryType().getType()));
