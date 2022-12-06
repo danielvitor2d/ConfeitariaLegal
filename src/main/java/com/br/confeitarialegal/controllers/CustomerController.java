@@ -5,6 +5,7 @@ import com.br.confeitarialegal.repositories.RepositoryMethod;
 import com.br.confeitarialegal.repositories.implementations.hibernate.CustomerRepository;
 import com.br.confeitarialegal.repositories.implementations.in_memory.CustomerRepositoryInMemory;
 import com.br.confeitarialegal.repositories.interfaces.ICustomerRepository;
+
 import java.util.List;
 
 /**
@@ -22,8 +23,16 @@ public class CustomerController {
     }
   }
   
-  public Customer create(String name, String document, String email, String phonenumber) {
-    return this.repository.create(name, document, email, phonenumber);
+  public Customer create(String name, String document, String email, String phoneNumber) {
+    return this.repository.create(name, document, email, phoneNumber);
+  }
+
+  public Boolean saveChanges(List<Customer> customers, List<Customer> removedCustomers) {
+    return this.repository.saveChanges(customers, removedCustomers);
+  }
+
+  public Boolean  saveAll(List<Customer> customers) {
+      return this.repository.saveAll(customers);
   }
 
   public Customer get(int id) {

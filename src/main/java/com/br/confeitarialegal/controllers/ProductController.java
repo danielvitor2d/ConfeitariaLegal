@@ -7,6 +7,7 @@ import com.br.confeitarialegal.repositories.implementations.hibernate.ProductRep
 import com.br.confeitarialegal.repositories.implementations.in_memory.ProductRepositoryInMemory;
 import com.br.confeitarialegal.repositories.interfaces.IProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductController {
@@ -30,7 +31,6 @@ public class ProductController {
     }
 
     public List<Product> list() {
-        List<Product> products = this.repository.list();
-        return products;
+        return new ArrayList<>(this.repository.list());
     }
 }

@@ -14,10 +14,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SaleRepository implements ISaleRepository {
     private static SaleRepository instance;
@@ -38,7 +35,7 @@ public class SaleRepository implements ISaleRepository {
     @Override
     public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
         try {
-            Set<ProductsSales> productsSales = new HashSet<>();
+            List<ProductsSales> productsSales = new ArrayList<>();
 
             double totalValue = 0.0;
 
@@ -54,7 +51,7 @@ public class SaleRepository implements ISaleRepository {
 
             this.entityManager.getTransaction().begin();
 
-            this.entityManager.merge(sale);
+            this.entityManager.persist(sale);
 
             this.entityManager.getTransaction().commit();
 

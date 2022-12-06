@@ -5,7 +5,8 @@ public enum Screens {
     LOGIN("views/login"),
     CUSTOMERS("views/customers"),
     PRODUCTS("views/products"),
-    SALES("views/sales");
+    SALES("views/sales"),
+    UPDATE_CUSTOMER("views/update_customer");
 
     private String routeToFXML;
 

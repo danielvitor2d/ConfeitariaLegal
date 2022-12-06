@@ -1,10 +1,9 @@
 package com.br.confeitarialegal.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+import javax.persistence.*;
 
 /**
  *
@@ -12,53 +11,66 @@ import javax.persistence.Id;
  */
 
 @Entity(name = "library_users")
+@Access(AccessType.PROPERTY)
 public class User {
-  
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
-  
-  @Column(name = "email")
-  private String email;
-  
-  @Column(name = "password")
-  private String password;
+  private SimpleIntegerProperty id = new SimpleIntegerProperty();
+  private SimpleStringProperty email;
+  private SimpleStringProperty password;
 
   public User() {
+    this.email = new SimpleStringProperty("");
+    this.password = new SimpleStringProperty("");
   }
 
   public User(String email, String password) {
-    this.email = email;
-    this.password = password;
+    this.email = new SimpleStringProperty(email);
+    this.password = new SimpleStringProperty(password);
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id")
   public Integer getId() {
-    return id;
+    return this.id.getValue();
   }
 
   public void setId(int id) {
-    this.id = id;
+    this.id.setValue(id);
   }
 
+  public SimpleIntegerProperty idProperty() {
+    return this.id;
+  }
+
+  @Column(name = "email")
   public String getEmail() {
-    return email;
+    return this.email.getValue();
   }
 
   public void setEmail(String email) {
-    this.email = email;
+    this.email.setValue(email);
   }
 
+  public SimpleStringProperty emailProperty() {
+    return this.email;
+  }
+
+  @Column(name = "password")
   public String getPassword() {
-    return password;
+    return this.password.getValue();
   }
 
   public void setPassword(String password) {
-    this.password = password;
+    this.password.setValue(password);
+  }
+
+  public SimpleStringProperty passwordProperty() {
+    return this.password;
   }
 
   @Override
   public String toString() {
-    return "User{" + "id=" + id + ", email=" + email + ", password=" + password + '}';
+    return "User{" + "id=" + id.getValue() + ", email=" + email.getValue() + ", password=" + password.getValue() + '}';
   }
   
 }
