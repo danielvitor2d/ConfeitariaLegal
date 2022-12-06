@@ -16,7 +16,7 @@ public class UserRepository implements IUserRepository {
 
   private final EntityManager entityManager;
 
-    private UserRepository() {
+  private UserRepository() {
       this.entityManager = Connection.getInstance().create();
   }
 

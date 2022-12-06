@@ -22,6 +22,7 @@
       <!--Show SQL in console-->
       <property name="hibernate.format_sql" value="true"/>
       <!--Show SQL formatted-->
+      <property name="hibernate.id.new_generator_mappings" value="true" />
     </properties>
   </persistence-unit>
 </persistence>

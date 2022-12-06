@@ -15,5 +15,6 @@ module com.br.confeitarialegal {
   opens com.br.confeitarialegal.entities;
 
   exports com.br.confeitarialegal;
+  exports com.br.confeitarialegal.entities;
   exports com.br.confeitarialegal.views;
 }

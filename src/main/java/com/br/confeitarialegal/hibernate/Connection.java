@@ -33,6 +33,7 @@ public class Connection {
       System.out.println("Entity Manager criado = " + entityManager);
     } catch (Exception e) {
       System.out.println("Erro ao se conectar ao Banco de Dados");
+      System.out.println(e.getMessage());
     }
     return entityManager;
   }

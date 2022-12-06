@@ -26,6 +26,10 @@ public class ManageScreens {
         redirectTo(Screens.REGISTRATION.getRoute());
     }
 
+    public static void switchToUpdateCustomer() {
+        redirectTo(Screens.UPDATE_CUSTOMER.getRoute());
+    }
+
     private static void redirectTo(String to) {
         try {
             App.setRoot(to);

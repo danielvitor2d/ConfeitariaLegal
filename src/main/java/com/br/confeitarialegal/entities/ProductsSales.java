@@ -1,97 +1,110 @@
 package com.br.confeitarialegal.entities;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity(name = "library_products_sales")
+@Access(AccessType.PROPERTY)
 public class ProductsSales {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sale_id")
-    private Sale sale;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @Column(name = "quantity")
-    private Double quantity;
-
-    @Column(name = "total_value")
-    private Double totalValue;
+    private SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private SimpleObjectProperty<Sale> sale;
+    private SimpleObjectProperty<Product> product;
+    private SimpleDoubleProperty quantity;
+    private SimpleDoubleProperty totalValue;
 
     @Override
     public String toString() {
         return "ProductsSales{" +
-                "sale=" + sale +
-                ", product=" + product +
-                ", quantity=" + quantity +
-                ", totalValue=" + totalValue +
+                "sale=" + sale.getValue() +
+                ", product=" + product.getValue() +
+                ", quantity=" + quantity.getValue() +
+                ", totalValue=" + totalValue.getValue() +
                 '}';
     }
 
     public ProductsSales() {
+        this.sale = new SimpleObjectProperty<>();
+        this.product = new SimpleObjectProperty<>();
+        this.quantity = new SimpleDoubleProperty();
+        this.totalValue = new SimpleDoubleProperty();
     }
 
     public ProductsSales(Product product, Double quantity, Double totalValue) {
-        this.product = product;
-        this.quantity = quantity;
-        this.totalValue = totalValue;
+        this.sale = new SimpleObjectProperty<>();
+        this.product = new SimpleObjectProperty<>(product);
+        this.quantity = new SimpleDoubleProperty(quantity);
+        this.totalValue = new SimpleDoubleProperty(totalValue);
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
-        return id;
+        return id.getValue();
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id.setValue(id);
     }
 
+    public SimpleIntegerProperty idProperty() {
+        return this.id;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "sale_id")
     public Sale getSale() {
-        return sale;
+        return sale.getValue();
     }
 
     public void setSale(Sale sale) {
-        this.sale = sale;
+        this.sale.setValue(sale);
     }
 
+    public SimpleObjectProperty saleProperty() {
+        return this.sale;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id")
     public Product getProduct() {
-        return product;
+        return product.getValue();
     }
 
     public void setProduct(Product product) {
-        this.product = product;
+        this.product.setValue(product);
     }
 
+    public SimpleObjectProperty productProperty() {
+        return this.product;
+    }
+
+
+    @Column(name = "quantity")
     public Double getQuantity() {
-        return quantity;
+        return quantity.getValue();
     }
 
     public void setQuantity(Double quantity) {
-        this.quantity = quantity;
+        this.quantity.setValue(quantity);
     }
 
+    public SimpleDoubleProperty quantityProperty() {
+        return this.quantity;
+    }
+
+    @Column(name = "total_value")
     public Double getTotalValue() {
-        return totalValue;
+        return totalValue.getValue();
     }
 
     public void setTotalValue(Double totalValue) {
-        this.totalValue = totalValue;
+        this.totalValue.setValue(totalValue);
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof ProductsSales)) return false;
-//        ProductsSales that = (ProductsSales) o;
-//        return id == that.id && Objects.equals(sale, that.sale) && Objects.equals(product, that.product) && Objects.equals(quantity, that.quantity) && Objects.equals(totalValue, that.totalValue);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, sale, product, quantity, totalValue);
-//    }
+    public SimpleDoubleProperty totalValueProperty() {
+        return this.totalValue;
+    }
 }

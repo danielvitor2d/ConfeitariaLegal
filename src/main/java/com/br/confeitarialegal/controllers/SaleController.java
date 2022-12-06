@@ -10,6 +10,7 @@ import com.br.confeitarialegal.repositories.implementations.hibernate.SaleReposi
 import com.br.confeitarialegal.repositories.implementations.in_memory.SaleRepositoryInMemory;
 import com.br.confeitarialegal.repositories.interfaces.ISaleRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,6 @@ public class SaleController {
     }
 
     public List<Sale> list() {
-        List<Sale> sales = this.repository.list();
-        return sales;
+        return new ArrayList<>(this.repository.list());
     }
 }

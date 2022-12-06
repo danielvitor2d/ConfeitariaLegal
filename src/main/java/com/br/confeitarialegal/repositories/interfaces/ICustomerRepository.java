@@ -10,6 +10,8 @@ import com.br.confeitarialegal.entities.Customer;
  */
 public interface ICustomerRepository {
   Customer create(String name, String document, String email, String phoneNumber);
+  Boolean saveChanges(List<Customer> customers, List<Customer> removedCustomers);
+  Boolean saveAll(List<Customer> customers);
   Customer get(int id);
   List<Customer> list();
 }

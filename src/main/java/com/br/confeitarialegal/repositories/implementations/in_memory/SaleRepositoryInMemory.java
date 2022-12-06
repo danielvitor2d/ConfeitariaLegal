@@ -18,7 +18,7 @@ public class SaleRepositoryInMemory implements ISaleRepository {
     }
 
     public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
-        Set<ProductsSales> productsSales = new HashSet<>();
+        List<ProductsSales> productsSales = new ArrayList<>();
 
         double totalValue = 0.0;
 

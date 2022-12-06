@@ -30,6 +30,16 @@ public class CustomerRepositoryInMemory implements ICustomerRepository {
   }
 
   @Override
+  public Boolean saveChanges(List<Customer> customers, List<Customer> removedCustomers) {
+    return true;
+  }
+
+  @Override
+  public Boolean saveAll(List<Customer> customers) {
+    return true;
+  }
+
+  @Override
   public Customer get(int id) {
     Optional<Customer> result = this.customers.stream().filter(product -> product.getId() == id).findFirst();
     return result.orElse(null);

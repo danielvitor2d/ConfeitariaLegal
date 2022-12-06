@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static java.util.List.*;
+
 public class SaleControllerTests {
 
     @Test
@@ -30,7 +32,7 @@ public class SaleControllerTests {
         Product product1 = productController.create("Coxinha", 5.0f, UnitaryTypes.UNIT);
         Product product2 = productController.create("Bolo confeitado", 25.99f, UnitaryTypes.KILOGRAM);
 
-        List<Double> quantity = new ArrayList<>(List.of(2.0, 1.0));
+        List<Double> quantity = new ArrayList<>(of(2.0, 1.0));
 
         List<Product> products = new ArrayList<>();
         products.add(product1);
@@ -56,16 +58,16 @@ public class SaleControllerTests {
         Product product2 = productController.create("Pote de Nutella", 32.85, UnitaryTypes.LITER);
         Product product3 = productController.create("Açaí", 4.99, UnitaryTypes.GRAM);
 
-        List<Double> quantity1 = new ArrayList<>(List.of(2.0, 1.0));
-        List<Double> quantity2 = new ArrayList<>(List.of(1.5, 500.0));
+        List<Double> quantity1 = new ArrayList<>(of(2.0, 1.0));
+        List<Double> quantity2 = new ArrayList<>(of(1.5, 500.0));
 
         List<Product> products = new ArrayList<>();
         products.add(product1);
         products.add(product2);
 
         List<Product> products2 = new ArrayList<>();
-        products.add(product2);
-        products.add(product3);
+        products2.add(product2);
+        products2.add(product3);
 
         Date date = new Date();
 

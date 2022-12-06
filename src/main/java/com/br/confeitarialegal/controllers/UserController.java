@@ -22,8 +22,7 @@ public class UserController {
   }
   
   public User create(String email, String password) {
-    User user = this.repository.create(email, password);
-    return user;
+    return this.repository.create(email, password);
   }
   
   public int getLength() {
