@@ -14,6 +14,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.*;
 
 public class SaleRepository implements ISaleRepository {
@@ -33,7 +34,7 @@ public class SaleRepository implements ISaleRepository {
     }
 
     @Override
-    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
+    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, LocalDate paymentDate, LocalDate createdAt) {
         try {
             List<ProductsSales> productsSales = new ArrayList<>();
 
@@ -42,7 +43,7 @@ public class SaleRepository implements ISaleRepository {
             for (int idx = 0; idx < products.size(); idx++) {
                 Product productToSave = products.get(idx);
                 Double quantityToSave = quantity.get(idx);
-                Double totalValueToSave = quantityToSave * productToSave.getUnitaryValue();
+                double totalValueToSave = quantityToSave * productToSave.getUnitaryValue();
                 totalValue += totalValueToSave;
                 productsSales.add(new ProductsSales(productToSave, quantityToSave, totalValueToSave));
             }
@@ -61,6 +62,30 @@ public class SaleRepository implements ISaleRepository {
             this.entityManager.getTransaction().rollback();
         }
         return null;
+    }
+
+    @Override
+    public Boolean saveChanges(List<Sale> sales, List<Sale> removedSales) {
+        try {
+            this.entityManager.getTransaction().begin();
+            for (int i = 0; i < sales.size(); i++) {
+                this.entityManager.merge(sales.get(i));
+                if ((i % 10000) == 0) {
+                    this.entityManager.flush();
+                    this.entityManager.clear();
+                }
+            }
+
+            for (Sale sale : removedSales) {
+                this.entityManager.remove(this.entityManager.contains(sale) ? sale : this.entityManager.merge(sale));
+            }
+            this.entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            this.entityManager.getTransaction().rollback();
+            return false;
+        }
     }
 
     @Override

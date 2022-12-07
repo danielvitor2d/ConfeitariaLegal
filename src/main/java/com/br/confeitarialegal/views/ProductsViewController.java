@@ -131,7 +131,6 @@ public class ProductsViewController implements Initializable {
       @Override
       protected void succeeded() {
         initialProducts.clear();
-        data.clear();
         this.getValue().forEach(product -> {
           initialProducts.add(product.createClone());
         });

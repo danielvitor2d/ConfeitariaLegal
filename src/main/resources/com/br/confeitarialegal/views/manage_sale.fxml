@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import com.br.confeitarialegal.utils.CurrencyField?>
+<DialogPane fx:id="dialogPane" style="-fx-font-family: Fira Code; -fx-font-size: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.br.confeitarialegal.views.ManageSaleController">
+    <content>
+        <GridPane alignment="CENTER" hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="300.0" vgap="5.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Código" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                    <font>
+                        <Font name="Fira Code Regular" size="15.0" />
+                    </font>
+                </Text>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                    <font>
+                        <Font name="Fira Code Regular" size="15.0" />
+                    </font>
+                </Text>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pagamento" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <font>
+                        <Font name="Fira Code Regular" size="15.0" />
+                    </font>
+                </Text>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Data do Pagamento" GridPane.rowIndex="3">
+                    <font>
+                        <Font name="Fira Code Regular" size="15.0" />
+                    </font>
+                </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Data da compra" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Fira Code Regular" size="15.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Fira Code Regular" size="15.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Fira Code Regular" size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="idField" editable="false" GridPane.columnIndex="1">
+                <font>
+                    <Font name="Fira Code Regular" size="15.0" />
+                </font>
+            </TextField>
+            <ComboBox fx:id="paymentTypeField" layoutX="225.0" layoutY="264.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="paymentDateField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="createdAtField" layoutX="225.0" layoutY="170.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <ComboBox fx:id="statusField" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="customerField" layoutX="225.0" layoutY="122.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CurrencyField fx:id="totalValueField" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Fira Code Regular" size="15.0" />
+               </font>
+            </CurrencyField>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </GridPane>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:constant="CANCEL" />
+        <ButtonType fx:constant="OK" />
+    </buttonTypes>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</DialogPane>

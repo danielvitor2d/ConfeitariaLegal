@@ -13,6 +13,7 @@ import com.br.confeitarialegal.repositories.RepositoryMethod;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +39,7 @@ public class SaleControllerTests {
         products.add(product1);
         products.add(product2);
 
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
 
         Sale sale = saleController.create(customer, products, quantity, StatusType.AWAITING_PAYMENT, PaymentTypes.CREDIT_CARD, null, date);
 
@@ -69,7 +70,7 @@ public class SaleControllerTests {
         products2.add(product2);
         products2.add(product3);
 
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
 
         Sale sale1 = saleController.create(customer1, products, quantity1, StatusType.DONE, PaymentTypes.PIX, date, date);
         Sale sale2 = saleController.create(customer2, products2, quantity2, StatusType.AWAITING_PAYMENT, PaymentTypes.DEFAULT, null, date);
