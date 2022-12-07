@@ -4,16 +4,15 @@ import com.br.confeitarialegal.App;
 import com.br.confeitarialegal.controllers.CustomerController;
 import com.br.confeitarialegal.entities.Customer;
 import com.br.confeitarialegal.repositories.RepositoryMethod;
+import com.br.confeitarialegal.views.enums.DialogMode;
 import com.br.confeitarialegal.views.enums.Screens;
 import com.br.confeitarialegal.views.utils.Alerts;
 import com.br.confeitarialegal.views.utils.ManageScreens;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,8 +26,6 @@ import javafx.scene.layout.HBox;
 
 import java.net.URL;
 import java.util.*;
-
-enum DialogMode { ADD, UPDATE };
 
 /**
  * FXML Controller class
@@ -119,10 +116,6 @@ public class CustomersViewController implements Initializable {
     this.tableColumnDocument.setCellValueFactory(new PropertyValueFactory<>("document"));
     this.tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-//    messgeLabel.textProperty().bind(
-//            tableViewCustomers.getSelectionModel().selectedIndexProperty().asString()
-//    );
-
     populateTableView();
   }
 
@@ -178,11 +171,11 @@ public class CustomersViewController implements Initializable {
 
     try {
       FXMLLoader fxmlLoader = new FXMLLoader();
-      fxmlLoader.setLocation(App.class.getResource(Screens.UPDATE_CUSTOMER.getRoute() + ".fxml"));
+      fxmlLoader.setLocation(App.class.getResource(Screens.MANAGE_CUSTOMER.getRoute() + ".fxml"));
       DialogPane customerDialogPane = fxmlLoader.load();
 
-      UpdateCustomerController updateCustomerController = fxmlLoader.getController();
-      updateCustomerController.setCustomer(customer);
+      ManageCustomerController manageCustomerController = fxmlLoader.getController();
+      manageCustomerController.setCustomer(customer);
 
       Dialog<ButtonType> dialog = new Dialog<>();
       dialog.setDialogPane(customerDialogPane);
@@ -261,6 +254,7 @@ public class CustomersViewController implements Initializable {
     });
   }
 
+  @FXML
   public void handleKeyPress(KeyEvent event) {
       if (event.getCode() == KeyCode.ESCAPE) {
         this.tableViewCustomers.getSelectionModel().clearSelection();

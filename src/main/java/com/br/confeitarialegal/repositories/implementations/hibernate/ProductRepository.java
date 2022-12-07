@@ -1,6 +1,5 @@
 package com.br.confeitarialegal.repositories.implementations.hibernate;
 
-import com.br.confeitarialegal.entities.Customer;
 import com.br.confeitarialegal.entities.Product;
 import com.br.confeitarialegal.entities.enums.UnitaryTypes;
 import com.br.confeitarialegal.hibernate.Connection;
@@ -42,6 +41,30 @@ public class ProductRepository implements IProductRepository {
             this.entityManager.getTransaction().rollback();
         }
         return null;
+    }
+
+    @Override
+    public Boolean saveChanges(List<Product> products, List<Product> removedProducts) {
+        try {
+            this.entityManager.getTransaction().begin();
+            for (int i = 0; i < products.size(); i++) {
+                this.entityManager.merge(products.get(i));
+                if ((i % 10000) == 0) {
+                    this.entityManager.flush();
+                    this.entityManager.clear();
+                }
+            }
+
+            for (Product product : removedProducts) {
+                this.entityManager.remove(this.entityManager.contains(product) ? product : this.entityManager.merge(product));
+            }
+            this.entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            this.entityManager.getTransaction().rollback();
+            return false;
+        }
     }
 
     @Override

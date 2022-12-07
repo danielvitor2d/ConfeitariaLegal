@@ -14,7 +14,7 @@ import javafx.util.converter.NumberStringConverter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UpdateCustomerController implements Initializable {
+public class ManageCustomerController implements Initializable {
   private Customer customer;
 
   @FXML
@@ -60,10 +60,9 @@ public class UpdateCustomerController implements Initializable {
   }
 
   private boolean validateFormData() {
-    if (this.customer.getDocument().length() != 11) return false;
+    if (this.customer.getDocument().length() != 14) return false;
     if (this.customer.getName().length() < 2) return false;
     if (this.customer.getEmail().length() < 5) return false;
-    if (this.customer.getPhoneNumber().length() < 8) return false;
-    return true;
+    return this.customer.getPhoneNumber().length() >= 8;
   }
 }

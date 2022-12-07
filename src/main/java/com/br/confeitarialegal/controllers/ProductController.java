@@ -26,6 +26,10 @@ public class ProductController {
         return this.repository.create(name, unitaryValue, unitaryType);
     }
 
+    public Boolean saveChanges(List<Product> products, List<Product> removedProducts) {
+        return this.repository.saveChanges(products, removedProducts);
+    }
+
     public Product get(int id) {
         return this.repository.get(id);
     }

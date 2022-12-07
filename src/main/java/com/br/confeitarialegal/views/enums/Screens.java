@@ -6,9 +6,10 @@ public enum Screens {
     CUSTOMERS("views/customers"),
     PRODUCTS("views/products"),
     SALES("views/sales"),
-    UPDATE_CUSTOMER("views/update_customer");
+    MANAGE_CUSTOMER("views/manage_customer"),
+    MANAGE_PRODUCT("views/manage_product");
 
-    private String routeToFXML;
+    private final String routeToFXML;
 
     Screens(String route) {
         this.routeToFXML = route;

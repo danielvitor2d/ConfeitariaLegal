@@ -12,6 +12,7 @@ module com.br.confeitarialegal {
 
   opens com.br.confeitarialegal to javafx.fxml;
   opens com.br.confeitarialegal.views to javafx.fxml;
+  opens com.br.confeitarialegal.utils to javafx.fxml;
   opens com.br.confeitarialegal.entities;
 
   exports com.br.confeitarialegal;
