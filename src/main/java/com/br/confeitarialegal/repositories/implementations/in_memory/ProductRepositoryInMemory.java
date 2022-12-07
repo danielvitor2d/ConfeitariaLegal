@@ -23,6 +23,11 @@ public class ProductRepositoryInMemory implements IProductRepository {
     }
 
     @Override
+    public Boolean saveChanges(List<Product> products, List<Product> removedProducts) {
+        return false;
+    }
+
+    @Override
     public Product get(int id) {
         Optional<Product> result = this.products.stream().filter(product -> product.getId() == id).findFirst();
         return result.orElse(null);
