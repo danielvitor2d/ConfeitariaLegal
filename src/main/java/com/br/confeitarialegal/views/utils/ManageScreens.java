@@ -22,14 +22,6 @@ public class ManageScreens {
         redirectTo(Screens.LOGIN.getRoute());
     }
 
-    public static void switchToRegistration() {
-        redirectTo(Screens.REGISTRATION.getRoute());
-    }
-
-    public static void switchToManageCustomer() {
-        redirectTo(Screens.MANAGE_CUSTOMER.getRoute());
-    }
-
     private static void redirectTo(String to) {
         try {
             App.setRoot(to);

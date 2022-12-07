@@ -8,6 +8,7 @@ import com.br.confeitarialegal.entities.enums.PaymentTypes;
 import com.br.confeitarialegal.entities.enums.StatusType;
 import com.br.confeitarialegal.repositories.interfaces.ISaleRepository;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class SaleRepositoryInMemory implements ISaleRepository {
@@ -17,7 +18,7 @@ public class SaleRepositoryInMemory implements ISaleRepository {
         this.sales = new ArrayList<>();
     }
 
-    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
+    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, LocalDate paymentDate, LocalDate createdAt) {
         List<ProductsSales> productsSales = new ArrayList<>();
 
         double totalValue = 0.0;
@@ -34,6 +35,11 @@ public class SaleRepositoryInMemory implements ISaleRepository {
         this.sales.add(sale);
 
         return sale;
+    }
+
+    @Override
+    public Boolean saveChanges(List<Sale> sales, List<Sale> removedSales) {
+        return null;
     }
 
     public List<Sale> list() {

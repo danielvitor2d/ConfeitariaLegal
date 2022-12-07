@@ -28,7 +28,8 @@ public class Customer {
 
   @Override
   public String toString() {
-    return "Customer{" + "id=" + id.getValue() + ", name=" + name.getValue() + ", document=" + document.getValue() + ", email=" + email.getValue() + ", phone-number=" + phoneNumber.getValue() + '}';
+    return this.getName();
+//    return "Customer{" + "id=" + id.getValue() + ", name=" + name.getValue() + ", document=" + document.getValue() + ", email=" + email.getValue() + ", phone-number=" + phoneNumber.getValue() + '}';
   }
   
   public Customer(String name, String document, String email, String phoneNumber) {

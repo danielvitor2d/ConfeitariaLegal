@@ -2,7 +2,8 @@ package com.br.confeitarialegal.utils;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class FormatData {
@@ -14,9 +15,9 @@ public class FormatData {
         return currencyFormatter.format(value);
     }
 
-    public static String toLocaleDate(Date date) {
+    public static String toLocaleDate(LocalDate date) {
         if (date == null) return null;
-        DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.SHORT, locale);
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", locale);
         return dateFormatter.format(date);
     }
 

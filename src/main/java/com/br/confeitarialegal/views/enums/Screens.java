@@ -7,7 +7,8 @@ public enum Screens {
     PRODUCTS("views/products"),
     SALES("views/sales"),
     MANAGE_CUSTOMER("views/manage_customer"),
-    MANAGE_PRODUCT("views/manage_product");
+    MANAGE_PRODUCT("views/manage_product"),
+    MANAGE_SALE("views/manage_sale");
 
     private final String routeToFXML;
 

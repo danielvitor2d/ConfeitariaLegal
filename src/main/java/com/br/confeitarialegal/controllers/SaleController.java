@@ -10,8 +10,8 @@ import com.br.confeitarialegal.repositories.implementations.hibernate.SaleReposi
 import com.br.confeitarialegal.repositories.implementations.in_memory.SaleRepositoryInMemory;
 import com.br.confeitarialegal.repositories.interfaces.ISaleRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SaleController {
@@ -26,8 +26,12 @@ public class SaleController {
         }
     }
 
-    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, Date paymentDate, Date createdAt) {
+    public Sale create(Customer customer, List<Product> products, List<Double> quantity, StatusType status, PaymentTypes paymentType, LocalDate paymentDate, LocalDate createdAt) {
         return this.repository.create(customer, products, quantity, status, paymentType, paymentDate, createdAt);
+    }
+
+    public Boolean saveChanges(List<Sale> sales, List<Sale> removedSales) {
+        return this.repository.saveChanges(sales, removedSales);
     }
 
     public List<Sale> list() {

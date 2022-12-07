@@ -16,4 +16,9 @@ public enum StatusType {
     public String getStatus() {
         return this.type;
     }
+
+    @Override
+    public String toString() {
+        return type;
+    }
 }

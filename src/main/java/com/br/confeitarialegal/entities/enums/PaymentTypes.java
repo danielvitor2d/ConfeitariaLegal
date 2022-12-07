@@ -17,4 +17,9 @@ public enum PaymentTypes {
     public String getPaymentType() {
         return this.paymentType;
     }
+
+    @Override
+    public String toString() {
+        return paymentType;
+    }
 }
